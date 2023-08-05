@@ -12,5 +12,8 @@
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.10.0"
   }
 }
