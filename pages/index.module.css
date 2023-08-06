@@ -4,25 +4,23 @@
   align-items: center;
   width: 100%;
   overflow: hidden; /* To hide the text when it slides out of the container */
-  height: 100vh;
+  height: 100%;
 }
 
 .content {
-  font-size: 100vh;
+  font-size: 800px;
   white-space: nowrap; /* To prevent text wrapping */
 }
-
 .slidingText {
   position: relative;
 
-  animation: slideLeft 10s linear infinite; /* 10s duration, linear speed, infinite loop */
+  animation: slideLeft 20s linear infinite; /* 10s duration, linear speed, infinite loop */
 }
-
 @keyframes slideLeft {
   from {
-    left: 0%; /* Start from the right side of the container */
+    left: 0px; /* Start from the right side of the container */
   }
   to {
-    left: -100%; /* End at the left side of the container */
+    left: -9000px; /* End at the left side of the container */
   }
 }
