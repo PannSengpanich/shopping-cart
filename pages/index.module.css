@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+
+  align-items: center;
+  width: 100%;
+  overflow: hidden; /* To hide the text when it slides out of the container */
+  height: 100vh;
+}
+
+.content {
+  font-size: 100vh;
+  white-space: nowrap; /* To prevent text wrapping */
+}
+
+.slidingText {
+  position: relative;
+
+  animation: slideLeft 10s linear infinite; /* 10s duration, linear speed, infinite loop */
+}
+
+@keyframes slideLeft {
+  from {
+    left: 0%; /* Start from the right side of the container */
+  }
+  to {
+    left: -100%; /* End at the left side of the container */
+  }
+}

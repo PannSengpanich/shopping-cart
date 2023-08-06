@@ -1,4 +1,12 @@
+import styles from "./index.module.css";
+
 function HomePage() {
-  return <h1>Hi</h1>;
+  return (
+    <div className={styles.container}>
+      <div className={`${styles.content} ${styles.slidingText}`}>
+        WELCOME TO MY SHOP
+      </div>
+    </div>
+  );
 }
 export default HomePage;
