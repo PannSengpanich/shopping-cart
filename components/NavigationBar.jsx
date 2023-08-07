@@ -5,10 +5,10 @@ function NavigationBar() {
     <div className={styles.container}>
       <Link href="/">Home</Link>
       <Link href="/electronics">Electronics</Link>
-      <Link href="/jewelry">Jewelry</Link>
+      <Link href="/jewelery">Jewelery</Link>
       <Link href="/men">Men</Link>
       <Link href="/women">Women</Link>
-      <Link href="/">Cart</Link>
+      <Link href="/cart">Cart</Link>
     </div>
   );
 }

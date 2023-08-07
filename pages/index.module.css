@@ -14,13 +14,13 @@
 .slidingText {
   position: relative;
 
-  animation: slideLeft 20s linear infinite; /* 10s duration, linear speed, infinite loop */
+  animation: slideLeft 15s linear infinite; /* 10s duration, linear speed, infinite loop */
 }
 @keyframes slideLeft {
   from {
-    left: 0px; /* Start from the right side of the container */
+    left: 100%; /* Start from the right side of the container */
   }
   to {
-    left: -9000px; /* End at the left side of the container */
+    left: -4050px; /* End at the left side of the container */
   }
 }
