@@ -1,11 +1,11 @@
 import styles from "./Card.module.css";
 import Rating from "@mui/material/Rating";
-
+import { TextField } from "@mui/material";
 function Card(props) {
   return (
     <div className={styles.container}>
       <img src={props.info.image} alt="" className={styles.img} />
-      <div>{props.info.title}</div>
+      <div className={styles.title}>{props.info.title}</div>
       <div className={styles.rating}>
         <Rating
           name="read-only"

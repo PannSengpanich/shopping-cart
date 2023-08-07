@@ -4,12 +4,16 @@
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  gap: 10px;
 }
 
 .img {
   width: 100px;
   height: 300px;
   object-fit: contain;
+}
+.title {
+  text-align: center;
 }
 .rating {
   display: flex;
