@@ -1,11 +1,19 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("../public//fonts/Oswald-Regular.ttf") format("truetype");
+}
+
 .container {
-  height: 50px;
+  font-family: "Oswald";
+  height: 80px;
   display: flex;
   justify-content: right;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   padding-right: 60px;
   background-color: black;
+  font-size: 24px;
+  user-select: none;
 }
 .container a {
   color: white;

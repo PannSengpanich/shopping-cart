@@ -8,7 +8,9 @@ function NavigationBar() {
       <Link href="/jewelery">Jewelery</Link>
       <Link href="/men">Men</Link>
       <Link href="/women">Women</Link>
-      <Link href="/cart">Cart</Link>
+      <Link href="/cart" className={styles.cart}>
+        Cart
+      </Link>
     </div>
   );
 }

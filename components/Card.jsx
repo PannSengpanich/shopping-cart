@@ -8,13 +8,21 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 
+import { useSelector, useDispatch } from "react-redux";
+import { productActions } from "@/store/product";
+
 function Card(props) {
-  const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.product.checkoutProduct);
+  const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
-  const handleAddToCart = () => {};
+  const handleAddToCart = () => {
+    dispatch(productActions.addToCart({ ...props.info, quantity: quantity }));
+    console.log({ ...props.info, quantity: quantity });
+  };
 
   const menuItems = [];
 
@@ -23,10 +31,11 @@ function Card(props) {
     menuItems.push(
       <MenuItem value={i} key={i}>
         {i}
-      </MenuItem>,
+      </MenuItem>
     );
   }
 
+  console.log(allProducts);
   return (
     <div className={styles.container} key={props.id}>
       <img src={props.info.image} alt="" className={styles.img} />
@@ -52,8 +61,7 @@ function Card(props) {
             id="demo-simple-select-standard"
             value={quantity}
             onChange={handleQuantityChange}
-            label="Quantity"
-          >
+            label="Quantity">
             {menuItems}
           </Select>
         </FormControl>

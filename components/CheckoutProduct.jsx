@@ -8,7 +8,7 @@ function CheckoutProduct({ product }) {
         <div>{product.title}</div>
       </div>
       <div className={styles.productRight}>
-        <div className={styles.price}>{product.price}</div>
+        <div className={styles.price}>฿{product.price * product.quantity}</div>
         <div className={styles.quantity}>
           Qty:
           <TextField
