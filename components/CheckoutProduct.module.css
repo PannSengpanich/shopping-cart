@@ -1,0 +1,25 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px grey solid;
+}
+.productLeft {
+}
+.productRight {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price {
+  color: green;
+  font-size: 24px;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+}
+.customTextField {
+  width: 50px;
+}

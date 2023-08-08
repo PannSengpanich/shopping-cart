@@ -10,7 +10,7 @@ export async function getStaticProps() {
 }
 
 function ElectronicsPage(props) {
-  console.log(props.electronics[0]);
+  console.log(props.electronics[1]);
   // Receive electronics as a prop
   return (
     <div className={styles.container}>

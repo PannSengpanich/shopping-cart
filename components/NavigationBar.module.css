@@ -5,4 +5,9 @@
   align-items: center;
   gap: 30px;
   padding-right: 60px;
+  background-color: black;
+}
+.container a {
+  color: white;
+  text-decoration: none;
 }

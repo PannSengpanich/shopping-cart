@@ -1,0 +1,16 @@
+.productContainer {
+  display: flex;
+  flex-direction: column;
+}
+.product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productRight {
+  display: flex;
+  align-items: center;
+}
+.customTextField {
+  width: 50px;
+}
