@@ -24,10 +24,6 @@
   font-size: 32px;
   color: green;
 }
-.quantity {
-  display: flex;
-  align-items: center;
-}
 .addToCart {
   width: 100%;
   display: flex;
