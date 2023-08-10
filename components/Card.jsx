@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styles from "./Card.module.css";
 import Rating from "@mui/material/Rating";
-import { TextField } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
+// import Card from "@mui/material/Card";
 
 import { useSelector, useDispatch } from "react-redux";
 import { productActions } from "@/store/product";
@@ -31,7 +31,7 @@ function Card(props) {
     menuItems.push(
       <MenuItem value={i} key={i}>
         {i}
-      </MenuItem>
+      </MenuItem>,
     );
   }
 
@@ -61,7 +61,8 @@ function Card(props) {
             id="demo-simple-select-standard"
             value={quantity}
             onChange={handleQuantityChange}
-            label="Quantity">
+            label="Quantity"
+          >
             {menuItems}
           </Select>
         </FormControl>

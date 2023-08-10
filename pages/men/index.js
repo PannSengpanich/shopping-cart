@@ -1,5 +1,5 @@
 import axios from "axios";
-import styles from "./men.module.css";
+import styles from "../productPage.module.css";
 import Fetch from "../../api/fetch";
 import Card from "@/components/Card";
 export async function getStaticProps() {

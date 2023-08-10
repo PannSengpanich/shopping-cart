@@ -5,7 +5,6 @@ import CheckoutProduct from "@/components/CheckoutProduct";
 import { useSelector, useDispatch } from "react-redux";
 
 function Cart() {
-  const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product.checkoutProduct);
 
   return (
@@ -17,6 +16,10 @@ function Cart() {
           return <CheckoutProduct product={product} />;
         })
       )}
+      <div className={styles.total}>
+        <div>Total</div>
+        <div></div>
+      </div>
     </div>
   );
 }

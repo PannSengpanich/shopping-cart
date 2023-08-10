@@ -1,4 +1,12 @@
+@font-face {
+  font-family: "NewsCycle";
+  src: url("../public//fonts/NewsCycle-Regular.ttf") format("truetype");
+}
 .product {
+  font-family: "NewsCycle", sans-serif;
+  font-weight: bold;
+  height: 60px;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,7 +15,7 @@
 .productLeft {
 }
 .productRight {
-  width: 200px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: space-between;

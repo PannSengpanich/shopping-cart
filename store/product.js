@@ -40,7 +40,7 @@ const productSlice = createSlice({
     addToCart(state, action) {
       // Find the index of the product with the matching id
       const productIndex = state.checkoutProduct.findIndex(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id,
       );
 
       if (productIndex >= 0) {
@@ -54,7 +54,39 @@ const productSlice = createSlice({
       }
       console.log(state.checkoutProduct);
     },
-    delete(state, action) {},
+    add(state, action) {
+      const productIndex = state.checkoutProduct.findIndex(
+        (product) => product.id === action.payload.id,
+      );
+
+      state.checkoutProduct[productIndex].quantity += 1;
+    },
+    remove(state, action) {
+      const productIndex = state.checkoutProduct.findIndex(
+        (product) => product.id === action.payload.id,
+      );
+      if (state.checkoutProduct[productIndex].quantity > 1) {
+        state.checkoutProduct[productIndex].quantity -= 1;
+      } else {
+        state.checkoutProduct.splice(productIndex, 1);
+      }
+    },
+    delete(state, action) {
+      const productIndex = state.checkoutProduct.findIndex(
+        (product) => product.id === action.payload.id,
+      );
+      state.checkoutProduct.splice(productIndex, 1);
+    },
+    typeQuantity(state, action) {
+      const productIndex = state.checkoutProduct.findIndex(
+        (product) => product.id === action.payload.id,
+      );
+      if (action.payload.quantity == 0) {
+        state.checkoutProduct.splice(productIndex, 1);
+      } else {
+        state.checkoutProduct[productIndex].quantity = action.payload.quantity;
+      }
+    },
   },
 });
 export const productActions = productSlice.actions;
