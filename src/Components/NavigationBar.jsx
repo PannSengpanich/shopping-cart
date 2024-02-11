@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Center, Tooltip, UnstyledButton, Stack, rem } from "@mantine/core";
 import {
   IconHome2,
-  IconLogout,
-  IconSwitchHorizontal,
   IconShoppingCart,
   IconBuildingStore,
 } from "@tabler/icons-react";
@@ -18,7 +16,9 @@ function NavbarLink({ Icon, label, active, onClick, index, des }) {
         onClick={onClick}
         className={classes.link}
         data-active={active || undefined}>
-        <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
+        <NavLink to={des}>
+          <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
+        </NavLink>
       </UnstyledButton>
     </Tooltip>
   );

@@ -16,7 +16,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <MantineProvider>
         <div className={styles.container}>
-          <NavigationBar></NavigationBar>
           <Router />
         </div>
         <ReactQueryDevtools></ReactQueryDevtools>
