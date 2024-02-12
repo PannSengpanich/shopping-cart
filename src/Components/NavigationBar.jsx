@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Center, Tooltip, UnstyledButton, Stack, rem } from "@mantine/core";
 import {
   IconHome2,
   IconShoppingCart,
   IconBuildingStore,
 } from "@tabler/icons-react";
-import { NavLink } from "react-router-dom"; // Import Link from React Router
+import { NavLink } from "react-router-dom";
 
 import classes from "../sass/NavigationBar.module.scss";
 
 function NavbarLink({ Icon, label, active, onClick, index, des }) {
   return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
-      <UnstyledButton
-        onClick={onClick}
-        className={classes.link}
-        data-active={active || undefined}>
-        <NavLink to={des}>
+    <NavLink to={des}>
+      <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
+        <UnstyledButton
+          onClick={onClick}
+          className={classes.link}
+          data-active={active || undefined}>
           <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
-        </NavLink>
-      </UnstyledButton>
-    </Tooltip>
+        </UnstyledButton>
+      </Tooltip>
+    </NavLink>
   );
 }
 
@@ -31,15 +31,22 @@ const mockdata = [
 ];
 
 export default function NavigationBar() {
-  const [active, setActive] = useState(0);
+  const [pageActive, setPageActive] = useState(() => {
+    const storedValue = localStorage.getItem("pageActive");
+    return storedValue ? parseInt(storedValue) : 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("pageActive", pageActive.toString());
+  }, [pageActive]);
 
   const links = mockdata.map((link, index) => (
     <NavbarLink
       Icon={link.icon}
       label={link.label}
       key={link.label}
-      active={index === active}
-      onClick={() => setActive(index)}
+      active={index === pageActive}
+      onClick={() => setPageActive(index)}
       des={link.des}
     />
   ));

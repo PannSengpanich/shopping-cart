@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import "@mantine/core/styles.css";
-import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "./services/queries";
+import { useState, useEffect } from "react";
+import AppRouter from "./router/Router.jsx";
+import styles from "./App.module.scss";
 
-function App() {
-  const products = useQuery({
-    queryKey: ["products"],
-    queryFn: () => getProducts(),
+export default function App() {
+  const [selectedProducts, setSelectedProducts] = useState(() => {
+    // Retrieve selected products from localStorage on initial render
+    const storedProducts = localStorage.getItem("selectedProducts");
+    return storedProducts ? JSON.parse(storedProducts) : [];
   });
-  console.log(products.data, products.isError);
-  if (products.isLoading) return <>Loading...</>;
-  if (products.isError) return <>Error occured</>;
+
+  useEffect(() => {
+    localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
+  }, [selectedProducts]);
+
+  const addProductToCart = (product) => {
+    setSelectedProducts([...selectedProducts, product]);
+  };
+
+  const removeProductFromCart = (product) => {};
+
   return (
-    <>
-      <ul>
-        {products.data.map((item) => {
-          return <li key={item.id}>{item.title}</li>;
-        })}
-      </ul>
-    </>
+    <div className={styles.container}>
+      <AppRouter />
+    </div>
   );
 }
-
-export default App;

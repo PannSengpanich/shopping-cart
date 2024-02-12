@@ -3,6 +3,8 @@ import axios from "axios";
 import "@mantine/core/styles.css";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../services/queries";
+import ProductCard from "../Components/ProductCard";
+import styles from "../sass/ShoppingPage.module.scss";
 
 function ShoppingPage() {
   const products = useQuery({
@@ -13,13 +15,11 @@ function ShoppingPage() {
   if (products.isLoading) return <>Loading...</>;
   if (products.isError) return <>Error occured</>;
   return (
-    <>
-      <ul>
-        {products.data.map((item) => {
-          return <li key={item.id}>{item.title}</li>;
-        })}
-      </ul>
-    </>
+    <div className={styles.container}>
+      {products.data.map((item) => {
+        return <ProductCard key={item.id} info={item}></ProductCard>;
+      })}
+    </div>
   );
 }
 

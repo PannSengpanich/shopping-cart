@@ -10,7 +10,7 @@ export default function AppRouter() {
     <Router>
       <NavigationBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage  />} />
         <Route path="/shopping" element={<ShoppingPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<ErrorPage />} />
