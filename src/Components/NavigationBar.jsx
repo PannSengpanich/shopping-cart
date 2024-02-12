@@ -37,9 +37,11 @@ export default function NavigationBar() {
   });
 
   useEffect(() => {
-    localStorage.setItem("pageActive", pageActive.toString());
+    localStorage.setItem("pageActive", parseInt(pageActive));
+    console.log(pageActive);
   }, [pageActive]);
 
+  console.log(pageActive);
   const links = mockdata.map((link, index) => (
     <NavbarLink
       Icon={link.icon}

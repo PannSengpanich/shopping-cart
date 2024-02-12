@@ -1,7 +1,13 @@
+.description {
+  margin-bottom: 10px;
+}
 .button-group {
   display: flex;
   .button {
     height: 30px;
-    margin-top: 10px;
+  }
+  .amount {
+    height: 30px;
+    padding-top: 3px;
   }
 }
