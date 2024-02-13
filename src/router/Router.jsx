@@ -5,13 +5,16 @@ import ShoppingPage from "../Pages/ShoppingPage";
 import CartPage from "../Pages/CartPage";
 import NavigationBar from "../Components/NavigationBar";
 
-export default function AppRouter() {
+export default function AppRouter({ addProductToCart }) {
   return (
     <Router>
       <NavigationBar />
       <Routes>
-        <Route path="/" element={<HomePage  />} />
-        <Route path="/shopping" element={<ShoppingPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/shopping"
+          element={<ShoppingPage addProductToCart={addProductToCart} />}
+        />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

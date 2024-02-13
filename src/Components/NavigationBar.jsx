@@ -32,12 +32,12 @@ const mockdata = [
 
 export default function NavigationBar() {
   const [pageActive, setPageActive] = useState(() => {
-    const storedValue = localStorage.getItem("pageActive");
+    const storedValue = sessionStorage.getItem("pageActive");
     return storedValue ? parseInt(storedValue) : 0;
   });
 
   useEffect(() => {
-    localStorage.setItem("pageActive", parseInt(pageActive));
+    sessionStorage.setItem("pageActive", parseInt(pageActive));
     console.log(pageActive);
   }, [pageActive]);
 
