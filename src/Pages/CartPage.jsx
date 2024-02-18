@@ -1,7 +1,11 @@
 import styles from "../sass/CartPage.module.scss";
 import { Modal, Button, ActionIcon } from "@mantine/core";
+import { NavLink } from "react-router-dom";
 
-export default function CartPage({ selectedProducts, addProductToCart }) {
+export default function CartPage({
+  selectedProducts,
+  updatedSelectedProducts,
+}) {
   function incAmount(id) {
     const updatedProducts = selectedProducts.map((item) => {
       if (item.id === id) {
@@ -9,17 +13,17 @@ export default function CartPage({ selectedProducts, addProductToCart }) {
       }
       return item;
     });
-    addProductToCart(updatedProducts);
+    updatedSelectedProducts(updatedProducts);
   }
-
   function decAmount(id) {
     const updatedProducts = selectedProducts.map((item) => {
-      if (item.id === id && item.amount > 0) {
+      if (item.id === id) {
         return { ...item, amount: item.amount - 1 };
       }
       return item;
     });
-    addProductToCart(updatedProducts);
+    const filteredProducts = updatedProducts.filter((item) => item.amount > 0);
+    updatedSelectedProducts(filteredProducts);
   }
   return (
     <div className={styles.container}>
@@ -29,36 +33,46 @@ export default function CartPage({ selectedProducts, addProductToCart }) {
         <div className={styles.amountHeader}>Amount</div>
         <div className={styles.totalHeader}>Total</div>
       </div>
-      {selectedProducts.map((item) => {
-        return (
-          <div className={styles.product} key={item.id}>
-            <div className={styles.title}>{item.title}</div>
-            <div className={styles.price}>{item.price}</div>
-            <div className={styles.amountContainer}>
-              <Button
-                variant="white"
-                color="blue"
-                className={styles.button}
-                onClick={decAmount(item.id)}
-              >
-                -
-              </Button>
-              <div className={styles.amount}>{item.amount}</div>
-              <Button
-                variant="white"
-                color="blue"
-                className={styles.button}
-                onClick={() => () => incAmount(item.id)}
-              >
-                +
-              </Button>
+      {selectedProducts.length === 0 ? (
+        <div className={styles.emptyCart}>
+          <NavLink to="/shopping">
+            <Button variant="white" color="blue" fullWidth>
+              Your cart is Empty. Go to shopping
+            </Button>
+          </NavLink>
+        </div>
+      ) : (
+        selectedProducts.map((item) => {
+          return (
+            <div className={styles.product} key={item.id}>
+              <div className={styles.title}>{item.title}</div>
+              <div className={styles.price}>{item.price}</div>
+              <div className={styles.amountContainer}>
+                <Button
+                  variant="white"
+                  color="blue"
+                  className={styles.button}
+                  onClick={() => decAmount(item.id)}
+                >
+                  -
+                </Button>
+                <div className={styles.amount}>{item.amount}</div>
+                <Button
+                  variant="white"
+                  color="blue"
+                  className={styles.button}
+                  onClick={() => incAmount(item.id)}
+                >
+                  +
+                </Button>
+              </div>
+              <div className={styles.total}>
+                {(item.amount * item.price).toFixed(2)}$
+              </div>
             </div>
-            <div className={styles.total}>
-              {(item.amount * item.price).toFixed(2)}$
-            </div>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </div>
   );
 }

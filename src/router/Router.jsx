@@ -5,7 +5,11 @@ import ShoppingPage from "../Pages/ShoppingPage";
 import CartPage from "../Pages/CartPage";
 import NavigationBar from "../Components/NavigationBar";
 
-export default function AppRouter({ addProductToCart, selectedProducts }) {
+export default function AppRouter({
+  addProductToCart,
+  selectedProducts,
+  updatedSelectedProducts,
+}) {
   return (
     <Router>
       <NavigationBar />
@@ -19,7 +23,7 @@ export default function AppRouter({ addProductToCart, selectedProducts }) {
           path="/cart"
           element={
             <CartPage
-              addProductToCart={addProductToCart}
+              updatedSelectedProducts={updatedSelectedProducts}
               selectedProducts={selectedProducts}
             />
           }

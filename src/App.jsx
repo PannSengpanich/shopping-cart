@@ -14,14 +14,14 @@ export default function App() {
   useEffect(() => {
     sessionStorage.setItem(
       "selectedProducts",
-      JSON.stringify(selectedProducts)
+      JSON.stringify(selectedProducts),
     );
     console.log(selectedProducts);
   }, [selectedProducts]);
 
   const addProductToCartHandler = (product) => {
     const existingProductIndex = selectedProducts.findIndex(
-      (p) => p.id === product.id
+      (p) => p.id === product.id,
     );
 
     if (existingProductIndex !== -1) {
@@ -36,11 +36,15 @@ export default function App() {
   };
 
   const removeProductFromCart = (product) => {};
+  const updatedSelectedProductsHandler = (products) => {
+    setSelectedProducts(products);
+  };
 
   return (
     <div className={styles.container}>
       <AppRouter
         addProductToCart={addProductToCartHandler}
+        updatedSelectedProducts={updatedSelectedProductsHandler}
         selectedProducts={selectedProducts}
       />
     </div>

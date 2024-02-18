@@ -12,7 +12,8 @@ function ShoppingPage({ addProductToCart }) {
     queryFn: () => getProducts(),
   });
   console.log(products.data, products.isError);
-  if (products.isLoading) return <>Loading...</>;
+  if (products.isLoading)
+    return <div className={styles.loading}>Loading...</div>;
   if (products.isError) return <>Error occured</>;
   return (
     <div className={styles.container}>
@@ -21,7 +22,8 @@ function ShoppingPage({ addProductToCart }) {
           <ProductCard
             key={item.id}
             info={item}
-            addProductToCart={addProductToCart}></ProductCard>
+            addProductToCart={addProductToCart}
+          ></ProductCard>
         );
       })}
     </div>
