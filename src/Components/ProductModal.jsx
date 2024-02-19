@@ -23,33 +23,36 @@ export default function ProductModal({
 
   return (
     <Modal opened={opened} onClose={onClose} withCloseButton={false} centered>
-      <div className={styles.description}>{info.description}</div>
-
-      <div className={styles["button-group"]}>
+      <div className={styles.container}>
+        <div className={styles.description}>{info.description}</div>
+        <div className={styles.price}>{info.price}$</div>
+        <div className={styles["button-group"]}>
+          <Button
+            variant="white"
+            color="blue"
+            fullWidth
+            className={styles.button}
+            onClick={decAmount}>
+            -
+          </Button>
+          <div className={styles.amount}>{productAmount}</div>
+          <Button
+            variant="white"
+            color="blue"
+            fullWidth
+            className={styles.button}
+            onClick={incAmount}>
+            +
+          </Button>
+        </div>
         <Button
-          variant="white"
-          color="blue"
-          fullWidth
-          className={styles.button}
-          onClick={decAmount}>
-          -
-        </Button>
-        <div className={styles.amount}>{productAmount}</div>
-        <Button
-          variant="white"
-          color="blue"
-          fullWidth
-          className={styles.button}
-          onClick={incAmount}>
-          +
-        </Button>
-        <ActionIcon
           variant="filled"
           aria-label="Settings"
           className={styles.button}
-          onClick={() => addProductToCart({ ...info, amount: productAmount })}>
-          <IconShoppingCart stroke={1.5} />
-        </ActionIcon>
+          onClick={() => addProductToCart({ ...info, amount: productAmount })}
+          fullWidth>
+          Add to cart
+        </Button>
       </div>
     </Modal>
   );

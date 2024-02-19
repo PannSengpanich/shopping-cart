@@ -1,5 +1,11 @@
-.description {
-  margin-bottom: 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.price {
+  align-self: center;
+  justify-items: center;
 }
 .button-group {
   display: flex;
