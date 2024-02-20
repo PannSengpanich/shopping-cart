@@ -7,7 +7,6 @@ import NavigationBar from "../Components/NavigationBar";
 
 export default function AppRouter({
   addProductToCart,
-  selectedProducts,
   updatedSelectedProducts,
 }) {
   return (
@@ -19,15 +18,7 @@ export default function AppRouter({
           path="/shopping"
           element={<ShoppingPage addProductToCart={addProductToCart} />}
         />
-        <Route
-          path="/cart"
-          element={
-            <CartPage
-              updatedSelectedProducts={updatedSelectedProducts}
-              selectedProducts={selectedProducts}
-            />
-          }
-        />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

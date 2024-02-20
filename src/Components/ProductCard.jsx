@@ -11,7 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import ProductModal from "./ProductModal"; // Import the ProductModal component
 import styles from "../sass/ProductCard.module.scss";
 
-export default function ProductCard({ info, addProductToCart }) {
+export default function ProductCard({ info }) {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -24,12 +24,7 @@ export default function ProductCard({ info, addProductToCart }) {
         </Group>
 
         {/* Render ProductModal component */}
-        <ProductModal
-          info={info}
-          opened={opened}
-          onClose={close}
-          addProductToCart={addProductToCart}
-        />
+        <ProductModal info={info} opened={opened} onClose={close} />
 
         <Button onClick={open} variant="light">
           View Info

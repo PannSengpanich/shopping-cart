@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { DataContext } from "../App";
 import axios from "axios";
 import "@mantine/core/styles.css";
 import { useQuery } from "@tanstack/react-query";
@@ -6,7 +7,7 @@ import { getProducts } from "../services/queries";
 import ProductCard from "../Components/ProductCard";
 import styles from "../sass/ShoppingPage.module.scss";
 
-function ShoppingPage({ addProductToCart }) {
+function ShoppingPage() {
   const products = useQuery({
     queryKey: ["products"],
     queryFn: () => getProducts(),
@@ -18,13 +19,7 @@ function ShoppingPage({ addProductToCart }) {
   return (
     <div className={styles.container}>
       {products.data.map((item) => {
-        return (
-          <ProductCard
-            key={item.id}
-            info={item}
-            addProductToCart={addProductToCart}
-          ></ProductCard>
-        );
+        return <ProductCard key={item.id} info={item}></ProductCard>;
       })}
     </div>
   );

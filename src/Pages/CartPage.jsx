@@ -1,11 +1,13 @@
+import { useContext } from "react";
+import { DataContext } from "../App";
 import styles from "../sass/CartPage.module.scss";
 import { Modal, Button, ActionIcon } from "@mantine/core";
 import { NavLink } from "react-router-dom";
 
-export default function CartPage({
-  selectedProducts,
-  updatedSelectedProducts,
-}) {
+export default function CartPage() {
+  const { selectedProducts, setSelectedProducts, setPageActive } =
+    useContext(DataContext);
+
   function incAmount(id) {
     const updatedProducts = selectedProducts.map((item) => {
       if (item.id === id) {
@@ -13,8 +15,9 @@ export default function CartPage({
       }
       return item;
     });
-    updatedSelectedProducts(updatedProducts);
+    setSelectedProducts(updatedProducts);
   }
+
   function decAmount(id) {
     const updatedProducts = selectedProducts.map((item) => {
       if (item.id === id) {
@@ -23,8 +26,9 @@ export default function CartPage({
       return item;
     });
     const filteredProducts = updatedProducts.filter((item) => item.amount > 0);
-    updatedSelectedProducts(filteredProducts);
+    setSelectedProducts(filteredProducts);
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -36,7 +40,12 @@ export default function CartPage({
       {selectedProducts.length === 0 ? (
         <div className={styles.emptyCart}>
           <NavLink to="/shopping">
-            <Button variant="white" color="blue" fullWidth>
+            <Button
+              variant="white"
+              color="blue"
+              fullWidth
+              onClick={() => setPageActive(1)}
+            >
               Your cart is Empty. Go to shopping
             </Button>
           </NavLink>

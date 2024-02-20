@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from "../App";
 import { Center, Tooltip, UnstyledButton, Stack, rem } from "@mantine/core";
 import {
   IconHome2,
@@ -16,7 +17,8 @@ function NavbarLink({ Icon, label, active, onClick, index, des }) {
         <UnstyledButton
           onClick={onClick}
           className={classes.link}
-          data-active={active || undefined}>
+          data-active={active || undefined}
+        >
           <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
         </UnstyledButton>
       </Tooltip>
@@ -31,16 +33,7 @@ const mockdata = [
 ];
 
 export default function NavigationBar() {
-  const [pageActive, setPageActive] = useState(() => {
-    const storedValue = sessionStorage.getItem("pageActive");
-    return storedValue ? parseInt(storedValue) : 0;
-  });
-
-  useEffect(() => {
-    sessionStorage.setItem("pageActive", parseInt(pageActive));
-    console.log(pageActive);
-  }, [pageActive]);
-
+  const { pageActive, setPageActive } = useContext(DataContext);
   console.log(pageActive);
   const links = mockdata.map((link, index) => (
     <NavbarLink

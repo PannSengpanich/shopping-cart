@@ -1,16 +1,11 @@
-// ProductModal.js
-
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { DataContext } from "../App";
 import { Modal, Button, ActionIcon } from "@mantine/core";
 import { IconAdjustments, IconShoppingCart } from "@tabler/icons-react";
 import styles from "../sass/ProductModal.module.scss";
 
-export default function ProductModal({
-  info,
-  opened,
-  onClose,
-  addProductToCart,
-}) {
+export default function ProductModal({ info, opened, onClose }) {
+  const { addProductToCart } = useContext(DataContext);
   const [productAmount, setProductAmount] = useState(0);
 
   const incAmount = () => {
@@ -32,7 +27,8 @@ export default function ProductModal({
             color="blue"
             fullWidth
             className={styles.button}
-            onClick={decAmount}>
+            onClick={decAmount}
+          >
             -
           </Button>
           <div className={styles.amount}>{productAmount}</div>
@@ -41,7 +37,8 @@ export default function ProductModal({
             color="blue"
             fullWidth
             className={styles.button}
-            onClick={incAmount}>
+            onClick={incAmount}
+          >
             +
           </Button>
         </div>
@@ -50,7 +47,8 @@ export default function ProductModal({
           aria-label="Settings"
           className={styles.button}
           onClick={() => addProductToCart({ ...info, amount: productAmount })}
-          fullWidth>
+          fullWidth
+        >
           Add to cart
         </Button>
       </div>
