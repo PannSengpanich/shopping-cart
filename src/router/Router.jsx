@@ -4,7 +4,6 @@ import ErrorPage from "../Pages/ErrorPage";
 import ShoppingPage from "../Pages/ShoppingPage";
 import CartPage from "../Pages/CartPage";
 import NavigationBar from "../Components/NavigationBar";
-import styles from "../sass/Router.module.scss";
 
 export default function AppRouter({
   addProductToCart,
@@ -12,7 +11,7 @@ export default function AppRouter({
 }) {
   return (
     <Router>
-      <NavigationBar className={styles.navbar} />
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
