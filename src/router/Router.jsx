@@ -4,23 +4,22 @@ import ErrorPage from "../Pages/ErrorPage";
 import ShoppingPage from "../Pages/ShoppingPage";
 import CartPage from "../Pages/CartPage";
 import NavigationBar from "../Components/NavigationBar";
-
-export default function AppRouter({
-  addProductToCart,
-  updatedSelectedProducts,
-}) {
+import styles from "../sass/Router.module.scss";
+export default function AppRouter({ addProductToCart }) {
   return (
     <Router>
       <NavigationBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/shopping"
-          element={<ShoppingPage addProductToCart={addProductToCart} />}
-        />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <div className={styles.content}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/shopping"
+            element={<ShoppingPage addProductToCart={addProductToCart} />}
+          />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
