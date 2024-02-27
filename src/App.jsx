@@ -46,6 +46,8 @@ export default function App() {
     }
   };
 
+  const removeProductFromCart = (product) => {};
+
   return (
     <DataContext.Provider
       value={{
