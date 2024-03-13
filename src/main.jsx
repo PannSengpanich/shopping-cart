@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <MantineProvider>
         <App></App>
-        <ReactQueryDevtools></ReactQueryDevtools>
+        <ReactQueryDevtools />
       </MantineProvider>
     </QueryClientProvider>
   </React.StrictMode>
