@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import { Link, NavLink } from "react-router-dom";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
-import { gapi } from "gapi-script";
+import { GoogleLogin } from "@react-oauth/google";
 import {
   TextInput,
   PasswordInput,
@@ -21,9 +20,6 @@ import {
 import styles from "../sass/SignUpPage.module.scss";
 
 export default function SignUpPage(props) {
-  const clientId =
-    "100841111499-io0ohnoerlem9lrulmsh0s2qsavmsmv4.apps.googleusercontent.com";
-  const [profile, setProfile] = useState([]);
   const form = useForm({
     initialValues: {
       email: "",
@@ -40,24 +36,6 @@ export default function SignUpPage(props) {
     },
   });
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({ clientId: clientId, scope: "" });
-    };
-    gapi.load("client:auth2", initClient);
-  }, []);
-
-  const onSuccess = (res) => {
-    setProfile(res.profileObj);
-    console.log("Login Success: currentUser:", res);
-  };
-  const onFailure = (res) => {
-    console.log("Login failed: res:", res);
-  };
-  const logOut = () => {
-    setProfile(null);
-  };
-
   return (
     <Paper className={styles.paper} radius="md" p="xl" withBorder {...props}>
       <Text size="lg" fw={500}>
@@ -65,26 +43,14 @@ export default function SignUpPage(props) {
       </Text>
 
       <Group grow mb="md" mt="md">
-        <div>
-          {profile ? (
-            <div>
-              <img src={profile.imageUrl} alt="user image" />
-              <GoogleLogout
-                clientId={clientId}
-                buttonText="Log out"
-                onLogoutSuccess={logOut}></GoogleLogout>
-            </div>
-          ) : (
-            <GoogleLogin
-              clientId={clientId}
-              buttonText="Sign in with Google"
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-              cookiePolicy={"single_host_origin"}
-              isSignedIn={true}
-            />
-          )}
-        </div>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={(error) => {
+            console.log("Login Failed", error);
+          }}
+        ></GoogleLogin>
       </Group>
 
       <Divider label="Or continue with email" labelPosition="center" my="lg" />
@@ -146,7 +112,8 @@ export default function SignUpPage(props) {
               c="dimmed"
               onClick={() => {}}
               size="xs"
-              className={styles.anchor}>
+              className={styles.anchor}
+            >
               Already have an account? Login
             </Anchor>
           </NavLink>

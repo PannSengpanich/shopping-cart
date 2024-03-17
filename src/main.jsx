@@ -12,12 +12,12 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <GoogleOAuthProvider clientId="917129421762-96acbas5dotojmpvijdq0ost9odb2nmo.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="100841111499-1b1pkss2vhmkst94divjetaln4ij0vos.apps.googleusercontent.com">
         <MantineProvider>
           <App></App>
           <ReactQueryDevtools />
         </MantineProvider>
       </GoogleOAuthProvider>
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
