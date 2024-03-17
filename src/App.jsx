@@ -7,6 +7,7 @@ import styles from "./App.module.scss";
 
 export const DataContext = createContext();
 export default function App() {
+  const currentPath = window.location.pathname;
   const [selectedProducts, setSelectedProducts] = useState(() => {
     const storedProducts = sessionStorage.getItem("selectedProducts");
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -20,7 +21,7 @@ export default function App() {
   useEffect(() => {
     sessionStorage.setItem(
       "selectedProducts",
-      JSON.stringify(selectedProducts),
+      JSON.stringify(selectedProducts)
     );
     console.log(selectedProducts);
   }, [selectedProducts]);
@@ -32,7 +33,7 @@ export default function App() {
 
   const addProductToCart = (product) => {
     const existingProductIndex = selectedProducts.findIndex(
-      (p) => p.id === product.id,
+      (p) => p.id === product.id
     );
 
     if (existingProductIndex !== -1) {
@@ -56,10 +57,9 @@ export default function App() {
         addProductToCart,
         pageActive,
         setPageActive,
-      }}
-    >
+      }}>
       <div className={styles.container}>
-        <AppRouter />
+        <AppRouter currentPath={currentPath} />
       </div>
     </DataContext.Provider>
   );

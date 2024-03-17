@@ -26,7 +26,7 @@ function NavbarLink({ Icon, label, active, onClick, index, des }) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: "Home", des: "/" },
+  { icon: IconHome2, label: "Home", des: "/home" },
   { icon: IconBuildingStore, label: "Shopping", des: "/shopping" },
   { icon: IconShoppingCart, label: "Cart", des: "/cart" },
 ];
