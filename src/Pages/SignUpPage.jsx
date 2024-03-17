@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
+
 import {
   TextInput,
   PasswordInput,
@@ -18,8 +19,10 @@ import {
 // import { GoogleButton } from "./GoogleButton";
 // import { TwitterButton } from "./TwitterButton";
 import styles from "../sass/SignUpPage.module.scss";
+import { jwtDecode } from "jwt-decode";
 
 export default function SignUpPage(props) {
+  const navigate = useNavigate();
   const form = useForm({
     initialValues: {
       email: "",
@@ -45,7 +48,11 @@ export default function SignUpPage(props) {
       <Group grow mb="md" mt="md">
         <GoogleLogin
           onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
+            var credentialResponseDecoded = jwtDecode(
+              credentialResponse.credential,
+            );
+            console.log("Login Success", credentialResponseDecoded);
+            navigate("/home");
           }}
           onError={(error) => {
             console.log("Login Failed", error);
