@@ -2,7 +2,6 @@ import React from "react";
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import { Link, NavLink } from "react-router-dom";
-
 import {
   TextInput,
   PasswordInput,
@@ -35,65 +34,71 @@ export default function LogInPage(props) {
   });
 
   return (
-    <Paper className={styles.paper} radius="md" p="xl" withBorder {...props}>
-      <Text size="lg" fw={500}>
-        Welcome to Mantine, Log In with
-      </Text>
+    <div className={styles.container}>
+      <Paper className={styles.paper} radius="md" p="xl" withBorder {...props}>
+        <Text size="lg" fw={500}>
+          Welcome to Mantine, Log In with
+        </Text>
 
-      {/* <Group grow mb="md" mt="md">
+        {/* <Group grow mb="md" mt="md">
         <GoogleButton radius="xl">Google</GoogleButton>
         <TwitterButton radius="xl">Twitter</TwitterButton>
       </Group> */}
 
-      <Divider label="Or continue with email" labelPosition="center" my="lg" />
+        <Divider
+          label="Or continue with email"
+          labelPosition="center"
+          my="lg"
+        />
 
-      <form onSubmit={form.onSubmit(() => {})}>
-        <Stack>
-          <TextInput
-            required
-            label="Email"
-            placeholder="hello@mantine.dev"
-            value={form.values.email}
-            onChange={(event) =>
-              form.setFieldValue("email", event.currentTarget.value)
-            }
-            error={form.errors.email && "Invalid email"}
-            radius="md"
-          />
+        <form onSubmit={form.onSubmit(() => {})}>
+          <Stack>
+            <TextInput
+              required
+              label="Email"
+              placeholder="hello@mantine.dev"
+              value={form.values.email}
+              onChange={(event) =>
+                form.setFieldValue("email", event.currentTarget.value)
+              }
+              error={form.errors.email && "Invalid email"}
+              radius="md"
+            />
 
-          <PasswordInput
-            required
-            label="Password"
-            placeholder="Your password"
-            value={form.values.password}
-            onChange={(event) =>
-              form.setFieldValue("password", event.currentTarget.value)
-            }
-            error={
-              form.errors.password &&
-              "Password should include at least 6 characters"
-            }
-            radius="md"
-          />
-        </Stack>
+            <PasswordInput
+              required
+              label="Password"
+              placeholder="Your password"
+              value={form.values.password}
+              onChange={(event) =>
+                form.setFieldValue("password", event.currentTarget.value)
+              }
+              error={
+                form.errors.password &&
+                "Password should include at least 6 characters"
+              }
+              radius="md"
+            />
+          </Stack>
 
-        <Group justify="space-between" mt="xl">
-          <NavLink to="/signup">
-            <Anchor
-              component="button"
-              type="button"
-              c="dimmed"
-              onClick={() => {}}
-              size="xs"
-              className={styles.anchor}>
-              Create an account? Sign up
-            </Anchor>
-          </NavLink>
-          <Button type="submit" radius="xl">
-            Log in
-          </Button>
-        </Group>
-      </form>
-    </Paper>
+          <Group justify="space-between" mt="xl">
+            <NavLink to="/signup">
+              <Anchor
+                component="button"
+                type="button"
+                c="dimmed"
+                onClick={() => {}}
+                size="xs"
+                className={styles.anchor}>
+                Create an account? Sign up
+              </Anchor>
+            </NavLink>
+            <Button type="submit" radius="xl">
+              Log in
+            </Button>
+          </Group>
+        </form>
+      </Paper>
+    </div>
   );
 }
