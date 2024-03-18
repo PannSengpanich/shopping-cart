@@ -14,12 +14,10 @@ import NavigationBar from "../Components/NavigationBar";
 import styles from "../sass/Router.module.scss";
 import SignUpPage from "../Pages/SignUpPage";
 import LogInPage from "../Pages/LogInPage";
-// import LogInPage from "../Pages/LogInPage";
 
 export default function AppRouter({ addProductToCart, currentPath }) {
   return (
     <Router>
-      {/* {!isExcludedRoute && <NavigationBar />} */}
       <div className={styles.content}>
         <Routes>
           <Route

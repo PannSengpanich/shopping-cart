@@ -53,7 +53,6 @@ export default function SignUpPage(props) {
                 credentialResponse.credential
               );
               console.log("Login Success", credentialResponseDecoded);
-              navigate("/home");
             }}
             onError={(error) => {
               console.log("Login Failed", error);
